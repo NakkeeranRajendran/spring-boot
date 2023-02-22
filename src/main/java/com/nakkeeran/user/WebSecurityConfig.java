@@ -71,7 +71,7 @@ public class WebSecurityConfig {
 	@Bean 
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http.csrf(csrf -> csrf.disable()).cors(Customizer.withDefaults())
-			   .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/user/authenticate").permitAll().requestMatchers(HttpMethod.POST, "/user/login").permitAll().requestMatchers("/api/outlet_group/users/export/*").permitAll().anyRequest().authenticated())
+			   .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/users/login").permitAll().requestMatchers(HttpMethod.POST, "/user/login").permitAll().requestMatchers("/api/outlet_group/users/export/*").permitAll().anyRequest().authenticated())
 			   .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			   
 		.build();
